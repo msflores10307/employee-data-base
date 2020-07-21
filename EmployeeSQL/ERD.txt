@@ -1,0 +1,42 @@
+departments
+-
+id int autoincrement pk
+dept_no varchar
+dept_name varchar
+
+
+dept_manager
+- 
+id int autoincrement pk
+dept_no varchar fk >- departments.dept_no
+emp_no bigint fk - employee.emp_no
+
+employee
+- 
+id int autoincrement pk
+emp_no bigint 
+emp_title_id varchar fk  >- titles.title_id
+birth_date date
+first_name varchar
+last_name varchar
+sex char(1) 
+hire_date date
+
+
+dept_emp
+- 
+id int autoincrement pk
+emp_no bigint fk  -< employee.emp_no
+dept_no varchar fk - departments.dept_no
+
+titles
+-
+id int autoincrement pk
+title_id varchar
+title varchar
+
+salaries
+-
+id int autoincrement pk
+emp_no bigint fk - employee.emp_no
+salary double
