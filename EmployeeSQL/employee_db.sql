@@ -1,18 +1,19 @@
+/* 
+Database Creation Script:
 
-/*
-ALTER TABLE "dept_manager" DROP CONSTRAINT "fk_dept_manager_dept_no";
-
-ALTER TABLE "dept_manager" DROP CONSTRAINT "fk_dept_manager_emp_no";
-
-ALTER TABLE "employees" DROP CONSTRAINT "fk_employees_emp_title_id";
-
-ALTER TABLE "dept_emp" DROP CONSTRAINT "fk_dept_emp_emp_no";
-
-ALTER TABLE "dept_emp" DROP CONSTRAINT "fk_dept_emp_dept_no";
-
-ALTER TABLE "salaries" DROP CONSTRAINT "fk_salaries_emp_no";
+This script creates and refreshes tables, keys, and constraints for the tables in employee_db. 
+The schema itself was created using the PGAdmin user interface.
 */
 
+-- 1. This section of code removes existing constraints to allow the tables to be deleted.
+ALTER TABLE IF EXISTS "dept_manager" DROP CONSTRAINT "fk_dept_manager_dept_no";
+ALTER TABLE IF EXISTS "dept_manager" DROP CONSTRAINT "fk_dept_manager_emp_no";
+ALTER TABLE IF EXISTS "employees" DROP CONSTRAINT "fk_employees_emp_title_id";
+ALTER TABLE IF EXISTS "dept_emp" DROP CONSTRAINT "fk_dept_emp_emp_no";
+ALTER TABLE IF EXISTS "dept_emp" DROP CONSTRAINT "fk_dept_emp_dept_no";
+ALTER TABLE IF EXISTS "salaries" DROP CONSTRAINT "fk_salaries_emp_no";
+
+-- 2. This section of code drops each table if it exists and creates a new one.
 drop table if exists "departments";
 
 create table if not exists "departments" (
@@ -78,6 +79,7 @@ create table if not exists "salaries" (
     UNIQUE (emp_no)
 );
 
+-- 3. This section of code adds foreign key constraints for the relationships in the database.
 ALTER TABLE "dept_manager" ADD CONSTRAINT "fk_dept_manager_dept_no" FOREIGN KEY("dept_no")
 REFERENCES "departments" ("dept_no");
 

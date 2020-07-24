@@ -1,3 +1,13 @@
+/*
+Load Script:
+
+This script allows me to load each of the tables with a single step. 
+This script was required because PGAdmin did not correctly map 
+the data to fields when I attempted to load using the user interface. 
+I believe this is because it attempted to load data into the auto-incremented 
+primary key, causing a data type error. 
+*/
+
 COPY departments(dept_no,dept_name) 
 FROM 'C:\Users\msflo\DSBootcamp\sql-challenge\data\departments.csv' DELIMITER ',' CSV HEADER;
 
