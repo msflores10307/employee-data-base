@@ -1,6 +1,5 @@
-# SQL Homework - Employee Database: A Mystery in Two Parts
+Employee Database: A Mystery in Two Parts
 
-This repository contains solutions for sql-challenge homework assignment. 
 There are three important directories within this repo.
     
 ## 1. Profiling
